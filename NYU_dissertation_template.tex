@@ -1,0 +1,256 @@
+\documentclass[12pt,letterpaper,oneside,final]{memoir}
+%M-x shell
+%latexmk -pdf -e '$pdflatex=q/xelatex %O %S/' 20120825-dissertation.tex
+\usepackage[no-math]{fontspec}
+\usepackage{xltxtra}
+\defaultfontfeatures{Scale=MatchLowercase,Mapping=tex-text}
+\setmainfont[Mapping=tex-text]{Junicode} %CMU Serif
+\setsansfont[Mapping=tex-text]{Junicode} %CMU Sans Serif
+\setmonofont[Mapping=tex-text]{Junicode} %CMU Sans Serif
+\newfontfamily\greekfont{Junicode} %CMU Serif,Linux Libertine O,Junicode
+%\setmainfont[Mapping=tex-text]{CMU Serif}
+\usepackage{xkeyval}
+\usepackage{polyglossia}
+\setdefaultlanguage[variant=american]{english}
+\setotherlanguage[variant=ancient,numerals=arabic]{greek}
+\setotherlanguage[spelling=new]{german}
+\setotherlanguages{latin,french,italian,spanish}
+\usepackage[babel=once,english=american,autostyle=tryonce,strict=true]{csquotes}
+\usepackage[backend=biber,style=authoryear,sorting=debug,bibstyle=authoryear,citestyle=authoryear,useprefix=false,firstinits=false,url=false,usetranslator=true]{biblatex}%was: firstinits=true
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%sorting=debug: by sort key
+%sorting=nyt: what I need
+%%%%%%%%%%%%%%%%%%%
+%\DeclareAutoCiteCommand{plain}{\cite}{\cites}
+\DeclareAutoCiteCommand{plain}{\textcite}{\textcites}
+\DeclareAutoCiteCommand{inline}{\textcite}{\textcites}
+%\DeclareAutoCiteCommand{footnote}[l]{\footcite}{\footcites}
+%\DeclareAutoCiteCommand{footnote}[f]{\smartcite}{\smartcites}
+\bibliography{masterbib}
+\usepackage[final]{hyperref}%?%hyperfootnotes=false
+\hypersetup{bookmarks=false,        % show bookmarks bar?
+    unicode=true,           % non-Latin characters in Acrobat’s bookmarks
+    pdftoolbar=true,        % show Acrobat’s toolbar?
+    pdfmenubar=true,        % show Acrobat’s menu?
+    pdffitwindow=false,     % window fit to page when opened
+    pdfstartview={FitH},    % fits the width of the page to the window
+    pdftitle={},
+    pdfauthor={},     % author
+    pdfsubject={},   % subject of the document
+    pdfcreator={},   % creator of the document
+    pdfproducer={}, % producer of the document
+    pdfkeywords={}, % list of keywords
+    pdfnewwindow=true,      % links in new window
+    colorlinks=true,       % false: boxed links; true: colored links
+    linkcolor=black,          % color of internal links
+    citecolor=black,        % color of links to bibliography
+    filecolor=black,      % color of file links
+    urlcolor=black           % color of external links
+}
+\usepackage{microtype}
+\usepackage{xecolor}
+\definergbcolor{blue}{0000FF}
+\definergbcolor{red}{FF0000} %\textxecolor{colorname}{text}
+\XeTeXdashbreakstate=1
+\usepackage{indentfirst}
+\usepackage{outline}
+\usepackage{verbatim}
+\usepackage{enumerate}
+%\usepackage{tikz}
+%\usetikzlibrary{shapes,backgrounds}
+\usepackage{longtable}
+%\usepackage{lscape}
+%\usepackage{verse}
+%\usepackage{rotating}
+\usepackage{ccicons}
+\usepackage{bookmark}
+%\usepackage{ledmac,ledpar}
+\usepackage{etoolbox}
+%!%%%%%%%%%%%%%%%%%%%%%for non-italicized headings%%%%%
+% http://tex.stackexchange.com/questions/32655/remove-italic-from-memoir-headings-pagestyle
+\makeevenhead{headings}{\leftmark}{}{}
+\makeoddhead{headings}{\rightmark}{}{}
+\makeevenfoot{headings}{}{\thepage}{}
+\makeoddfoot{headings}{}{\thepage}{}
+
+%!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%!%%%%%%%%%%%%%%%%%%%%%for margins, l=1.5; rest=1.0, maybe add 0.1in%%%%%
+\setstocksize{11in}{8.5in}
+\settrimmedsize{11.0in}{8.5in}{*} %\settrimmedsize{ height }{ width }{ ratio }
+\settypeblocksize{7.75in}{5.8in}{*} %\settypeblocksize{ height }{ width }{ ratio } %note: 7.25h gives margins of 1.5 on top/bottom w/ ubratio of 1
+\setlrmargins{1.5in}{*}{*} %\setlrmargins{ spine }{ edge }{ ratio } %spine = left, edge = right; only answer one or two of these values
+%\setlrmarginsandblock{1.5in}{1.0in}{*} %\setlrmarginsandblock{ spine }{ edge }{ ratio } %
+%\setulmargins{*}{*}{*} %\setulmargins{ upper }{ lower }{ ratio }
+%\setulmarginsandblock{0.5in}{*}{*} %\setulmarginsandblock{ upper }{ lower }{ ratio }
+%\setheadfoot{*}{*} %\setheadfoot{ headheight }{ footskip }
+%\setheaderspaces{1.0in}{*}{*} %\setheaderspaces{ headdrop }{ headsep }{ ratio }
+%\checkandfixthelayout[lines]
+\flushbottom
+%!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\apptocmd{\sloppy}{\hbadness 10000\relax}{}{}
+
+\setsecnumdepth{subparagraph}
+\makeatletter
+\renewcommand\@makefntext{\hspace*{2em}\@thefnmark. }
+\newenvironment*{singlespcquote}
+        {\quote\SingleSpacing}
+        {\endquote}
+\SetBlockThreshold{0}
+\SetBlockEnvironment{singlespcquote}
+\SetCiteCommand{\parencite} %default is \cite
+
+\begin{document}
+%\fussy
+%\hyphenpenalty=5000   %1000 default=?
+%\tolerance=1000        %1000 %200= default
+%\setlength{\emergencystretch}{3em}
+%\midsloppy
+\fussy
+\vbadness=10000 % badness above which bad vboxes are shown. (Default = 10000?)
+\frontmatter
+\hyphenation{}
+
+\DoubleSpacing
+
+\begin{center}
+
+\thispagestyle{empty}
+YOUR DISSERTATION TITLE HERE
+
+
+\vspace{20mm}
+by\\
+\vspace{10mm}
+Your Name Here\\
+\vspace{10mm}
+A dissertation submitted in partial fulfillment\\
+of the requirements for the degree of\\
+Doctor of Philosophy\\
+Department of YOUR DEPARTMENT HERE\\
+New York University\\
+Month, YEAR
+\end{center}
+\vspace{35mm}
+\begin{flushright}
+{\rule[0pt]{45mm}{0.1mm}}\\ %rule[raise-height]{width}{height} * raise-height specifies how high to raise the rule (optional) * width specifies the length of the rule (mandatory) * height specifies the height of the rule (mandatory)
+
+YOUR ADVISOR NAME HERE
+\end{flushright}
+
+\newpage
+
+\thispagestyle{empty}
+
+\begin{center} Copyright © YEAR YOUR NAME HERE \end{center}
+
+\newpage
+
+\thispagestyle{empty}
+
+\chapter{Dedication}
+\SingleSpacing
+
+\DoubleSpacing
+
+\newpage
+
+\chapter{Acknowledgments}
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+\newpage
+
+\chapter{Abstract}
+\DoubleSpacing
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+\newpage
+\renewcommand*{\cftappendixname}{Appendix\space}
+\renewcommand*{\contentsname}{Table of contents}
+\setcounter{tocdepth}{2}% chapters and above
+%this removes TOC listing from TOC
+\begin{KeepFromToc}
+\tableofcontents
+\end{KeepFromToc}
+\clearpage
+\newpage
+\clearpage
+
+\chapter{Abbreviations}
+\SingleSpacing
+\begin{longtable}{ll}
+\emph{Abbrev.} & Abbreviation\\
+\end{longtable}
+
+\DoubleSpacing
+\mainmatter
+\clearpage
+\cleardoublepage  
+\phantomsection  
+\addcontentsline{toc}{chapter}{Introduction}
+
+\chapter*[Introduction]{Introduction}
+\label{ch-intro}
+\enquote{Lorem ipsum dolor sit amet,} consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\footnote{Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.} Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+\section{A section}
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+\subsection{A subsection}
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+\chapter{First Chapter Title}
+\label{ch-1}
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+\chapter{Second Chapter Title}
+\label{ch-2}
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+\chapter{Third Chapter Title}
+\label{ch-3}
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+\begin{appendices}
+
+\chapter{An Appendix Title}
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+\end{appendices}
+
+\newpage
+
+\clearpage
+
+\backmatter
+
+\begin{OnehalfSpace}
+\setlength{\bibitemsep}{\onelineskip}
+\printbibliography
+
+\end{OnehalfSpace}
+
+\end{document}
