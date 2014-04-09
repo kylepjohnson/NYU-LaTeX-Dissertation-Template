@@ -13,7 +13,7 @@ A few important notes about this template:
   * The template uses the Memoir class, intended for the typesetting of book–length projects.
   * I have enabled character protrusion with the Microtype package. This is a newly introduced feature for the XeLaTeX system, so make sure it is working correctly.
   * Instead of Babel, XeLaTeX uses Polyglossia for multilingual hyphenation.
-  * I have no intention of keeping this up–to–date. If it works for you, great. If not, then I hope have fun hacking it.
+  * I have no intention of keeping this up–to–date. If it works for you, great. If not, then have fun hacking it.
 
 
 Copyright (C) 2012 Kyle P. Johnson
